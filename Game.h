@@ -13,6 +13,8 @@ typedef struct{
 	int maxParticles;
 	Vec2* particles;
 	int particleCount;
+	float Xm;
+	float Ym;
 }GAME;
 
 GAME* InitGame(int width,int height,int fps);

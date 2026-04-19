@@ -5,8 +5,8 @@
 #include"Game.h"
 #include<string.h>
 
-#define HEIGHT 400
-#define WIDTH 400
+#define HEIGHT 1000
+#define WIDTH 1000
 
 int main(){
     bool Finished = false;
@@ -24,7 +24,7 @@ int main(){
     }
 	SDL_Surface* WindowSurface = SDL_GetWindowSurface(MainWindow);
 	//Initializing game related structs
-	GAME* MainGame = InitGame(WIDTH,HEIGHT,10);
+	GAME* MainGame = InitGame(WIDTH,HEIGHT,120);
 	SDL_Surface* MainSurface = SDL_CreateSurface(WIDTH,HEIGHT,SDL_PIXELFORMAT_RGB24);
 	MainSurface->pixels = MainGame->buffer->data;
 
@@ -36,6 +36,7 @@ int main(){
             }
         }
 		Uint64 delta = SDL_GetTicks();
+		SDL_GetMouseState(&MainGame->Xm,&MainGame->Ym);
 		Tick(MainGame);
 		SDL_BlitSurface(MainSurface,NULL,WindowSurface,NULL);
 		SDL_UpdateWindowSurface(MainWindow);

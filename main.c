@@ -5,8 +5,9 @@
 #include"Game.h"
 #include<string.h>
 
-#define HEIGHT 1000
-#define WIDTH 1000
+#define HEIGHT 100
+#define WIDTH 100
+#define FRAMERATE 30
 
 int main(){
     bool Finished = false;
@@ -24,8 +25,8 @@ int main(){
     }
 	SDL_Surface* WindowSurface = SDL_GetWindowSurface(MainWindow);
 	//Initializing game related structs
-	GAME* MainGame = InitGame(WIDTH,HEIGHT,120);
-	SDL_Surface* MainSurface = SDL_CreateSurface(WIDTH,HEIGHT,SDL_PIXELFORMAT_RGB24);
+	GAME* MainGame = InitGame(WIDTH,HEIGHT,FRAMERATE);
+	SDL_Surface* MainSurface = SDL_CreateSurface(WIDTH,HEIGHT,SDL_PIXELFORMAT_RGBA32);
 	MainSurface->pixels = MainGame->buffer->data;
 
 	while (!Finished) {
@@ -42,6 +43,7 @@ int main(){
 		SDL_UpdateWindowSurface(MainWindow);
 		SDL_ShowWindow(MainWindow);
 		delta = SDL_GetTicks() - delta;
+		printf("%d\n",(delta==0)?1000:1000/delta);
 		if (MainGame->fps != 0){
 			SDL_Delay((delta > 1000/MainGame->fps) ? 0:1000/MainGame->fps-delta);
 		}

@@ -7,14 +7,9 @@
 typedef struct{
 	uint64_t frame;
 	image* buffer;
-	image* next;
-	uint16_t fps;
-	Vec2 position;
-	int maxParticles;
-	Vec2* particles;
-	int particleCount;
 	float Xm;
 	float Ym;
+	V2f Pos;
 }GAME;
 
 GAME* InitGame(int width,int height,int fps);

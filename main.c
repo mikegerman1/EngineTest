@@ -5,8 +5,8 @@
 #include"Game.h"
 #include<string.h>
 
-#define HEIGHT 100
-#define WIDTH 100
+#define HEIGHT 400
+#define WIDTH 400
 #define FRAMERATE 30
 
 int main(){
@@ -34,6 +34,7 @@ int main(){
         while (SDL_PollEvent(&event)){
             if (event.type == SDL_EVENT_QUIT){
                 Finished = true;
+
             }
         }
 		Uint64 delta = SDL_GetTicks();
